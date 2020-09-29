@@ -29,7 +29,7 @@ public class ArithmeticCalculatorServlet extends HttpServlet {
 //        String plus = request.getParameter("+");
 //        String minus = request.getParameter("-");
 //        String multiply = request.getParameter("*");
-//        String divide = request.getParameter("%");
+//        String modulus = request.getParameter("%");
                 
         int firstNum = 0;
         int secondNum = 0;
