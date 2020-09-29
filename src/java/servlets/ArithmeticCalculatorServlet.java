@@ -24,21 +24,33 @@ public class ArithmeticCalculatorServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String age = request.getParameter("age");
+        String firstNumber = request.getParameter("firstNumber");
+        String secondNumber = request.getParameter("secondNumber");
+//        String plus = request.getParameter("+");
+//        String minus = request.getParameter("-");
+//        String multiply = request.getParameter("*");
+//        String divide = request.getParameter("/");
+                
+        int firstNum = 0;
+        int secondNum = 0;
         
-        request.setAttribute("age", age);
+        request.setAttribute("firstNum", firstNumber);
+        request.setAttribute("secondNum", secondNumber);
         
-        if ( age == null || age.equals("")) {
+        if ( firstNumber == null || firstNumber.equals("") || !firstNumber.matches("[0-9]+")
+                || secondNumber == null || secondNumber.equals("") || !secondNumber.matches("[0-9]+")) {
             
-            request.setAttribute("message", "You must give your current age.");
+            request.setAttribute("result", " --- ");
             
-            getServletContext().getRequestDispatcher("/WEB-INF/agecalculator.jsp")
+            getServletContext().getRequestDispatcher("/WEB-INF/arithmeticcalculator.jsp")
                 .forward(request, response);
             return;
         }
-
         
-        getServletContext().getRequestDispatcher("/WEB-INF/agecalculator.jsp")
+        firstNum = Integer.parseInt(firstNumber);
+        secondNum = Integer.parseInt(secondNumber);
+        
+        getServletContext().getRequestDispatcher("/WEB-INF/arithmeticcalculator.jsp")
                 .forward(request, response);
     }
 

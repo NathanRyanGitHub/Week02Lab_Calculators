@@ -24,7 +24,7 @@
             <p>${message}</p>
             <p>${nextBday}</p>
         </form>
-        <a href="/arithmetic" title="Arithmetic Calculator">Arithmetic Calculator</a>
+        <a href="arithmetic" title="Arithmetic Calculator">Arithmetic Calculator</a>
 
         
     </body>

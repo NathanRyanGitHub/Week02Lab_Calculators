@@ -12,6 +12,22 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <header>
+            <h1>Arithmetic Calculator</h1>
+        </header>
+        
+        <form method="POST" action="arithmetic">
+            <label>First: </label>
+            <input type="text" name="firstNumber" value="${firstNum}">
+            <label>Second: </label>
+            <input type="text" name="secondNumber" value="${secondNum}">
+            <input type="submit" name="plus" value="+">
+            <input type="submit" name="minus" value="-">
+            <input type="submit" name="multiply" value="*">
+            <input type="submit" name="divide" value="/">           
+        </form>
+            
+        <p>Result: ${result}</p>
+        <a href="age" title="Age Calculator">Age Calculator</a>    
     </body>
 </html>
