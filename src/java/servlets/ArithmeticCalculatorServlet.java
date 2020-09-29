@@ -18,6 +18,7 @@ public class ArithmeticCalculatorServlet extends HttpServlet {
             throws ServletException, IOException {
         getServletContext().getRequestDispatcher("/WEB-INF/arithmeticcalculator.jsp")
                 .forward(request, response);
+        
     }
 
     @Override
@@ -26,21 +27,20 @@ public class ArithmeticCalculatorServlet extends HttpServlet {
         
         String firstNumber = request.getParameter("firstNumber");
         String secondNumber = request.getParameter("secondNumber");
-//        String plus = request.getParameter("+");
-//        String minus = request.getParameter("-");
-//        String multiply = request.getParameter("*");
-//        String modulus = request.getParameter("%");
-                
-        int firstNum = 0;
-        int secondNum = 0;
+        
+        int firstNum;
+        int secondNum;
+        String operation = request.getParameter("operation");
+        int result = 0;
         
         request.setAttribute("firstNum", firstNumber);
         request.setAttribute("secondNum", secondNumber);
+        request.setAttribute("operation", operation);
         
         if ( firstNumber == null || firstNumber.equals("") || !firstNumber.matches("[0-9]+")
                 || secondNumber == null || secondNumber.equals("") || !secondNumber.matches("[0-9]+")) {
             
-            request.setAttribute("result", " --- ");
+            request.setAttribute("result", " Invalid entry. Please enter two numbers. ");
             
             getServletContext().getRequestDispatcher("/WEB-INF/arithmeticcalculator.jsp")
                 .forward(request, response);
@@ -50,7 +50,19 @@ public class ArithmeticCalculatorServlet extends HttpServlet {
         firstNum = Integer.parseInt(firstNumber);
         secondNum = Integer.parseInt(secondNumber);
         
-        // Determine the operation?
+        if (operation.contains("+")) {
+            result = firstNum + secondNum;
+        }
+        if (operation.contains("-")) {
+            result = firstNum - secondNum;
+        }
+        if (operation.contains("*")) {
+            result = firstNum * secondNum;
+        }
+        if (operation.contains("%")) {
+            result = firstNum % secondNum;
+        }
+        request.setAttribute("result", result);
         
         getServletContext().getRequestDispatcher("/WEB-INF/arithmeticcalculator.jsp")
                 .forward(request, response);
