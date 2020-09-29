@@ -50,6 +50,8 @@ public class ArithmeticCalculatorServlet extends HttpServlet {
         firstNum = Integer.parseInt(firstNumber);
         secondNum = Integer.parseInt(secondNumber);
         
+        // Determine the operation?
+        
         getServletContext().getRequestDispatcher("/WEB-INF/arithmeticcalculator.jsp")
                 .forward(request, response);
     }
