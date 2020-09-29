@@ -24,7 +24,7 @@
             <input type="submit" name="plus" value="+">
             <input type="submit" name="minus" value="-">
             <input type="submit" name="multiply" value="*">
-            <input type="submit" name="divide" value="/">           
+            <input type="submit" name="divide" value="%">           
         </form>
             
         <p>Result: ${result}</p>
