@@ -25,17 +25,24 @@ public class AgeCalculatorServlet extends HttpServlet {
             throws ServletException, IOException {
         
         String age = request.getParameter("age");
+        int nextBirthday = 0;
         
         request.setAttribute("age", age);
+
         
         if ( age == null || age.equals("")) {
             
-            request.setAttribute("message", "Invalid entry. Please enter your age as a number.");
+            request.setAttribute("message", "You must give your current age.");
             
             getServletContext().getRequestDispatcher("/WEB-INF/agecalculator.jsp")
                 .forward(request, response);
             return;
         }
+        
+        nextBirthday = Integer.parseInt(age);
+        nextBirthday++;
+        
+        request.setAttribute("nextBday", "Your age next birthday will be " + nextBirthday);
         
         getServletContext().getRequestDispatcher("/WEB-INF/agecalculator.jsp")
                 .forward(request, response);
