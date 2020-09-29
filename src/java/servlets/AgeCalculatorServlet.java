@@ -29,10 +29,11 @@ public class AgeCalculatorServlet extends HttpServlet {
         
         request.setAttribute("age", age);
 
-        
-        if ( age == null || age.equals("")) {
+        // RegEx expression idea ".matches("[0-9]+")" obtained from
+        // https://stackoverflow.com/questions/10575624
+        if ( age == null || age.equals("") || !age.matches("[0-9]+")) {
             
-            request.setAttribute("message", "You must give your current age.");
+            request.setAttribute("message", "You must give your current age as a number. (Ex: 21)");
             
             getServletContext().getRequestDispatcher("/WEB-INF/agecalculator.jsp")
                 .forward(request, response);
